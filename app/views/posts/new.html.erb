@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>instagram</title>
+  </head>
+  <body>
+    <h1>new post.</h1>
+    <a><%= link_to "Post a pic", new_post_path, :class => 'btn btn-success' %></a>
+    <a><%= link_to "Home", '/', :class => 'btn btn-success' %></a>
+
+<%= form_for :post, url: posts_path do |form| %>
+    <% if @post.errors.any? %>
+      <% @post.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger"><%= msg %></div>
+      <% end %>
+    <% end %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field(:title, { :class => 'form-control' } ) %>
+  </p>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area(:body, { :class => 'form-control' } ) %>
+  </p>
+
+  <p>
+    <%= form.submit({:class => 'btn btn-success'}) %>
+  </p>
+<% end %>
+
+</body>
+</html>

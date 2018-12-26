@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+  resources :posts, :pics
+
+  root 'posts#index', as: 'home'
+  get 'users/all', to: 'users#index'
+
+  resources :posts do
+    resources :comments
+  end
+
 end
